@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Quitar el www y evitar problemas con las cookies
+RewriteCond %{HTTP_HOST} ^www\.contenidoextra\.es$ [NC]  
+RewriteRule ^(.*)$ http://contenidoextra.es/$1 [R=301,QSA,L] 
+
+# Propio del meneame
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^c/(.+)$ /comment.php/$1  [L,NS]
+RewriteRule ^notame$ /sneakme/index.php [L,NS]
+RewriteRule ^notame/$ /sneakme/index.php [L,NS]
+RewriteRule ^notame/(.+)$ /sneakme/index.php/$1 [L,NS]
+RewriteRule ^story/0(.+)$ /story.php?id=$1 [L,NS]
+RewriteRule ^story/(.+)$ /story.php/$1 [L,NS]
+RewriteRule ^user/(.+)$ /user.php/$1 [L,NS]
+RewriteRule ^search(/.*)$ /search.php$1 [L,NS,NE,PT]
