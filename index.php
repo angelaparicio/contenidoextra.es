@@ -103,9 +103,8 @@ do_last_blogs();
 echo '</div>' . "\n";
 /*** END SIDEBAR ***/
 
-echo '<div id="newswrap" style="text-align: center">'."\n";
-echo '<h1>Cerrado por cambios …</h1>';
-/*
+echo '<div id="newswrap">'."\n";
+
 do_banner_top_news();
 
 if ($page == 1 && ($top = Link::top())) {
@@ -132,7 +131,7 @@ if ($links) {
 
 
 do_pages($rows, $page_size);
-*/
+
 echo '</div>'."\n";
 
 do_footer_menu();
