@@ -6,15 +6,6 @@
 //              http://www.affero.org/oagpl.html
 // AFFERO GENERAL PUBLIC LICENSE is also included in the file called "COPYING".
 
-include('config.php');
-include(mnminclude.'html1.php');
-include(mnminclude.'ts.php');
-include(mnminclude.'ban.php');
-
-if ($current_user->user_id > 0) {
-	header("Location: " . get_user_uri($current_user->user_login));
-}
-
 if(isset($_POST["process"])) {
 	$globals['secure_page'] = True;
 }
@@ -25,7 +16,7 @@ if(isset($_POST["process"]) && !check_form_auth_ip()) {
 	die;
 }
 
-do_header(_("registro"), "post");
+//do_header(_("registro"), "post");
 
 if(isset($_POST["process"])) {
 	switch (intval($_POST["process"])) {
@@ -41,49 +32,67 @@ if(isset($_POST["process"])) {
 }
 
 echo '</div>' . "\n";
-do_footer();
-exit;
+
+echo '<div class="salto"></div>';
+//do_footer();
+//exit;
 
 function do_register0() {
-	echo '<div class="recoverpass" style="text-align:center"><h4><a href="login.php?op=recover">'._('¿has olvidado la contraseña?').'</a></h4></div>';
-
-	echo '<form action="'.get_auth_link().'register.php" method="post" id="thisform" onSubmit="return check_checkfield(\'acceptlegal\', \''._('no has aceptado las condiciones de uso').'\')">' . "\n";
-	echo '<fieldset>' . "\n";
-	echo '<legend><span class="sign">' . _("registro") . '</span></legend>' . "\n";
-	echo '<p><label for="name">' . _("nombre de usuario") . ':</label><br />' . "\n";
-
-	echo '<input type="text" name="username" id="name" value="" onkeyup="enablebutton(this.form.checkbutton1, this.form.submit, this)" size="25" tabindex="1"/>' . "\n";
-	echo '<span id="checkit"><input type="button" class="button" id="checkbutton1" disabled="disabled" value="'._('verificar').'" onclick="checkfield(\'username\', this.form, this.form.username)"/></span>' . "\n";
-	echo '&nbsp;<span id="usernamecheckitvalue"></span></p>' . "\n";
-
-	echo '<p><label for="email">email:</label><br />' . "\n";
-	echo '<span class="note">'._('es importante que sea correcta, recibirás un correo para validar la cuenta').'</span> <br />';
-	echo '<input type="text" id="email" name="email" value=""  onkeyup="enablebutton(this.form.checkbutton2, this.form.submit, this)" size="25" tabindex="2"/>' . "\n";
-		echo '<input type="button" class="button" id="checkbutton2" disabled="disabled" value="'._('verificar').'" onclick="checkfield(\'email\', this.form, this.form.email)"/>' . "\n";
-	echo '&nbsp;<span id="emailcheckitvalue"></span></p>' . "\n";
-
-	echo '<p><label for="password">' . _("clave") . ':</label><br />' . "\n";
-	echo '<span class="note">'._('al menos ocho caracteres, incluyendo mayúsculas, minúsculas y números').' </span><br />';
-	echo '<input type="password" id="password" name="password" size="25" tabindex="3" onkeyup="return securePasswordCheck(this.form.password);"/><span id="password1-warning"></span></p>' . "\n";
-	echo '<p><label for="verify">' . _("verificación de clave") . ': </label><br />' . "\n";
-
-	echo '<input type="password" id="verify" name="password2" size="25" tabindex="4" onkeyup="checkEqualFields(this.form.password2, this.form.password)"/></p>' . "\n";
-
-	echo '<p><label><span class="note">'._('has leído y aceptas las ');
-	do_legal(_('condiciones de uso'), 'target="_blank"', false);
-	echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
-
-	echo '<p><input type="submit" class="button" disabled="disabled" name="submit" value="'._('crear usuario').'" class="log2" tabindex="6" /></p>' . "\n";
-	echo '<input type="hidden" name="process" value="1"/>' . "\n";
-
-	echo '<div style="margin-top: 20px" style="text-align:center">';
-	print_oauth_icons($_REQUEST['return']);
-	echo '</div>'."\n";
-
-	echo '</fieldset>' . "\n";
-	get_form_auth_ip();
-	echo '</form>' . "\n";
-
+	//echo '<div class="recoverpass" style="text-align:center"><h4><a href="login.php?op=recover">'._('¿has olvidado la contraseña?').'</a></h4></div>';
+	
+	echo "<div id=\"register_home_info\">\n";
+		
+		echo '<legend><span class="sign">' . _("Bienvenido") . '</span></legend>' . "\n";
+		
+		echo "<p>Bienvenido a contenidoExtra, un lugar para compartir críticas y noticias sobre cine \n"; 
+		echo "basado en el código de <a href=\"http://www.meneame.net/\">menéame</a></p>\n";
+	
+		echo "<p>Si tienes un sitio con noticias de cine y quieres compartirlas aquí, puedes darte de alta y enviar tus noticias y críticas aquí.</p>\n";
+		
+		echo "<p>Puedes registrarte en el formulario de la derecha. Una vez registrado, podrás comentar y enviar noticias y críticas.</p>\n";
+		
+	echo "</div>\n";
+	
+	echo "<div id=\"register_home_form\">\n";
+	
+		echo '<form action="'.get_auth_link().'register.php" method="post" id="thisform" onSubmit="return check_checkfield(\'acceptlegal\', \''._('no has aceptado las condiciones de uso').'\')">' . "\n";
+		echo '<fieldset>' . "\n";
+		echo '<legend><span class="sign">' . _("registro") . '</span></legend>' . "\n";
+		echo '<p><label for="name">' . _("nombre de usuario") . ':</label><br />' . "\n";
+		
+		echo '<input type="text" name="username" id="name" value="" onkeyup="enablebutton(this.form.checkbutton1, this.form.submit, this)" size="25" tabindex="1"/>' . "\n";
+		echo '<span id="checkit"><input type="button" class="button" id="checkbutton1" disabled="disabled" value="'._('verificar').'" onclick="checkfield(\'username\', this.form, this.form.username)"/></span>' . "\n";
+		echo '&nbsp;<span id="usernamecheckitvalue"></span></p>' . "\n";
+		
+		echo '<p><label for="email">email:</label>' . "\n";
+		echo '<span class="note">'._('es importante que sea correcta, recibirás un correo para validar la cuenta').'</span> <br />';
+		echo '<input type="text" id="email" name="email" value=""  onkeyup="enablebutton(this.form.checkbutton2, this.form.submit, this)" size="25" tabindex="2"/>' . "\n";
+			echo '<input type="button" class="button" id="checkbutton2" disabled="disabled" value="'._('verificar').'" onclick="checkfield(\'email\', this.form, this.form.email)"/>' . "\n";
+		echo '&nbsp;<span id="emailcheckitvalue"></span></p>' . "\n";
+		
+		echo '<p><label for="password">' . _("clave") . ':</label>' . "\n";
+		echo '<span class="note">'._('al menos ocho caracteres, incluyendo mayúsculas, minúsculas y números').' </span><br />';
+		echo '<input type="password" id="password" name="password" size="25" tabindex="3" onkeyup="return securePasswordCheck(this.form.password);"/><span id="password1-warning"></span></p>' . "\n";
+		echo '<p><label for="verify">' . _("verificación de clave") . ': </label><br />' . "\n";
+		
+		echo '<input type="password" id="verify" name="password2" size="25" tabindex="4" onkeyup="checkEqualFields(this.form.password2, this.form.password)"/></p>' . "\n";
+		
+		//echo '<p><label><span class="note">'._('has leído y aceptas las ');
+		//do_legal(_('condiciones de uso'), 'target="_blank"', false);
+		//echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
+		
+		echo '<p><input type="submit" class="button" disabled="disabled" name="submit" value="'._('crear usuario').'" class="log2" tabindex="6" /></p>' . "\n";
+		echo '<input type="hidden" name="process" value="1"/>' . "\n";
+		
+		echo '<div style="margin-top: 20px" style="text-align:center">';
+		print_oauth_icons($_REQUEST['return']);
+		echo '</div>'."\n";
+		
+		echo '</fieldset>' . "\n";
+		get_form_auth_ip();
+		echo '</form>' . "\n";
+	
+	echo '</div>';
 
 }
 

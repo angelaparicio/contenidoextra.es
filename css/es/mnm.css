@@ -78,7 +78,7 @@ cursor: pointer;
 background: gray;
 }
 
-fieldset {
+fieldset, #register_home_info {
 border: 1px solid;
 padding: 10px 10px;
 margin: 10px 0;
@@ -145,7 +145,7 @@ border-radius-topleft: 3px;
 }
 
 /* All 3 px */
-.sneaker-legend, #map, .commentform.warn, .warn, .box, fieldset, label {
+.sneaker-legend, #map, .commentform.warn, .warn, .box, fieldset, label, #register_home_info {
 border-radius: 3px;
 -moz-border-radius: 3px;
 -webkit-border-radius: 3px;
@@ -2147,4 +2147,41 @@ text-shadow: 0.1em 0.1em 0.2em grey;
 
 .pages .extra_buttons {
 float: right;
+}
+
+#register_home_info, #register_home_form {
+width: 45%;
+float: left;
+margin-left: 3%;
+}
+
+#register_home_info legend {
+top: -18px;
+width: 5.2em;
+position: relative;
+}
+
+#register_home_info {
+margin-top: 1.2em;
+height: 236px;
+}
+
+#register_home_info p {
+padding: 1em;
+}
+
+.salto {
+clear: both;
+}
+
+@media screen and (max-width: 800px) {
+	body {
+		font-size: 1em;
+	}
+	#headerwrap, #headerwrap, #container {
+		width: 800px;
+	}
+	#home .news-summary {
+		width: 600px;
+	}
 }

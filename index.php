@@ -22,15 +22,14 @@
 
 include('config.php');
 include(mnminclude.'html1.php');
-
+include(mnminclude.'ts.php');
+include(mnminclude.'ban.php');
 
 if (! $current_user->user_id) {
 	$globals['fancybox_enabled'] = false; // Don't load fancybox CSS and Javascript
 }
 
 meta_get_current();
-
-
 
 $page_size = 20;
 $page = get_current_page();
@@ -48,7 +47,10 @@ if($cat) {
 else {
 	do_header( _('Foro, actualidad y noticias sobre Cine. Contenido Extra.'), 'home');
 }
-do_tabs('main','published');
+
+if ( !isset($current_user->user_id) || $current_user->user_id < 1 ) {
+	include('register_home.php');
+}
 
 $from = '';
 
@@ -142,16 +144,17 @@ function print_index_tabs($option=-1) {
 	global $globals, $db, $current_user;
 
 	$items = array();
-	if ($current_user->has_personal) {
+	/*if ($current_user->has_personal) {
 		$items[] = array('id' => 7, 'url' => '', 'title' => _('personal'));
-	}
+	}*/
 	$items[] = array('id' => 0, 'url' => $globals['meta_skip'], 'title' => _('todas'));
 	$metas = $db->get_results("SELECT SQL_CACHE category_id, category_name, category_uri FROM categories WHERE category_parent = 0 ORDER BY category_id ASC");
 	if ($metas) {
 		foreach ($metas as $meta) {
 			$items[] = array(
 				'id'  => 9999, /* fake number */
-				'url' =>'?meta='.$meta->category_uri,
+				//'url' =>'?meta='.$meta->category_uri,
+				'url' =>$meta->category_uri.'-de-cine/',
 				'selected' => $meta->category_id == $globals['meta_current'],
 				'title' => $meta->category_name
 			);
@@ -170,9 +173,9 @@ function print_index_tabs($option=-1) {
 		break;
 	}
 
-	if ($current_user->user_id > 0) {
+	/*if ($current_user->user_id > 0) {
 		$items[] = array('id' => 1, 'url' => '?meta=_friends', 'title' => _('amigos'));
-	}
+	}*/
 
 	$vars = compact('items', 'option', 'feed');
 	$vars['container_id']   = 'topcatlist';
