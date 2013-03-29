@@ -64,7 +64,7 @@ function do_banner_right() { // side banner A
 		if ($globals['kalooga_categories'] && isset($_REQUEST['category']) && in_array($_REQUEST['category'], $globals['kalooga_categories'])) {
 			$globals['kalooga_right'] = true;
 		}
-		Haanga::Safe_Load('private/ad-push.html');
+		//Haanga::Safe_Load('private/ad-push.html');
 	}
 }
 

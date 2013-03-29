@@ -301,12 +301,13 @@ function do_submit1() {
 	//ANGELITO: METER ESTO EN UNA FUNCION
 	$tags_aux = str_replace( array(' ante ', ' bajo ', ' cabe ', ' contra ', ' desde ', ' durante ', ' entre ', ' excepto ', ' hacia ', ' hasta ', ' mediante ', ' para ', ' salvo ', ' según ', ' sobre ', ' tras '),' ', strtolower($link->url_title) ); //preposiciones
 	$tags_aux = str_replace( array('Cómo ', 'Donde', 'Cuando', 'Adonde'), ' ', $tags_aux); //interrogativas
-	$tags_aux = str_replace( array('\'', '"', '(', ')','¡','!','¿','?'), ' ', $tags_aux); //basura. Seguro que se puede hacer con una regexp
+	$tags_aux = str_replace( array('\'', '"', '(', ')','¡','!','¿','?','&quot;',':'), ' ', $tags_aux); //basura. Seguro que se puede hacer con una regexp
 	$tags_aux = str_replace( ',,', ',', $tags_aux);
 	
 	$link->tags = '';
 	foreach ( explode(' ',$tags_aux) as $possible_tag ) {
-		if ( strlen($possible_tag) > 3 ){ 
+		$possible_tag = trim($possible_tag);
+		if ( strlen( $possible_tag) > 3 ){ 
 			$link->tags .= $possible_tag.', ';
 		}
 	}

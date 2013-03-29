@@ -160,9 +160,9 @@ function do_mnu_categories_horizontal($what_cat_id) {
 	} else {
 		$category_condition = "category_parent > 0";
 	}
-	$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name FROM categories WHERE $category_condition ORDER BY category_name ASC");
+	$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name, category_parent, category_uri FROM categories WHERE $category_condition ORDER BY category_name ASC");
 	if ($categories) {
-		$i = 0;
+
 		foreach ($categories as $category) {
 			if($category->category_id == $what_cat_id) {
 				$globals['category_id'] = $category->category_id;
@@ -173,11 +173,17 @@ function do_mnu_categories_horizontal($what_cat_id) {
 			}
 
 			echo '<li'.$thiscat.'>';
-			if ($i > 0) {
-				echo '&bull; &nbsp;';
+			
+			if ( $category->category_parent == 100 ){
+				$category_base = '/criticas-de-cine/';
+				$title_base = 'Críticas de cine: ';
 			}
-			$i++;
-			echo '<a href="?category='.$category->category_id.$query.'">';
+			else if ( $category->category_parent == 101 ){
+				$category_base = '/noticias-de-cine/';
+				$title_base = 'Noticias de cine: ';
+			}
+			
+			echo '<a href="'.$globals['base_web_url'].$category_base.$category->category_uri.'/'.$query.'" title="'.$title_base._($category->category_name).'">';
 			echo _($category->category_name);
 			echo "</a></li>";
 		}

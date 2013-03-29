@@ -39,13 +39,16 @@ $globals['ads_section'] = 'portada';
 
 $cat=$_REQUEST['category'];
 
+$load_sidebar = true;
 $header_extra = '';
 if($cat) {
 	$categoria = $db->get_var("SELECT category_name FROM `categories` WHERE `category_id` =".$cat." LIMIT 1");
-	do_header(_('Foro, actualidad y noticias sobre Cine. Contenido Extra. Categoría: '. ucfirst($categoria) ));
+	do_header(_('Foro, actualidad y noticias sobre Cine. Contenido Extra. Categoría: '. ucfirst($categoria) ), 'home');
+	$load_sidebar = false;
 }
 else {
 	do_header( _('Foro, actualidad y noticias sobre Cine. Contenido Extra.'), 'home');
+	$load_sidebar = false;
 }
 
 if ( !isset($current_user->user_id) || $current_user->user_id < 1 ) {
@@ -85,24 +88,26 @@ if ($globals['meta_current'] > 0) {
 do_mnu_categories_horizontal($_REQUEST['category']);
 
 /*** SIDEBAR ****/
-echo '<div id="sidebar">';
-do_banner_right();
-if ($globals['show_popular_published']) {
-	do_active_stories();
+if ( $load_sidebar ) {
+	echo '<div id="sidebar">';
+	do_banner_right();
+	if ($globals['show_popular_published']) {
+		do_active_stories();
+	}
+	do_banner_promotions();
+	if ($globals['show_popular_published']) {
+		do_best_stories();
+		do_most_clicked_stories();
+	}
+	do_best_sites();
+	if ($page < 2) {
+		do_best_comments();
+	}
+	do_categories_cloud('published');
+	do_vertical_tags('published');
+	do_last_blogs();
+	echo '</div>' . "\n";
 }
-do_banner_promotions();
-if ($globals['show_popular_published']) {
-	do_best_stories();
-	do_most_clicked_stories();
-}
-do_best_sites();
-if ($page < 2) {
-	do_best_comments();
-}
-do_categories_cloud('published');
-do_vertical_tags('published');
-do_last_blogs();
-echo '</div>' . "\n";
 /*** END SIDEBAR ***/
 
 echo '<div id="newswrap">'."\n";
