@@ -95,7 +95,7 @@
 
 	{% if type == 'full' || type == 'preview' %}
 		{% if self.thumb_url %}
-			<img src='{{ self.thumb_url }}' width='{{ self.thumb_x }}' height='{{ self.thumb_y }}' alt='{{ self.title }}' class='thumbnail'/>
+			<img src='{{ self.thumb_url }}' width='{{ self.thumb_x }}' height='{{ self.thumb_y }}' alt='{{ self.tags }}' class='thumbnail'/>
 		{% endif %}
 		<p>
 			{{ self.content }}

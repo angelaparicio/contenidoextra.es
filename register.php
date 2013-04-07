@@ -73,10 +73,10 @@ function do_register0() {
 	do_legal(_('condiciones de uso'), 'target="_blank"', false);
 	echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
 
-	echo '<p><input type="submit" class="button" disabled="disabled" name="submit" value="'._('crear usuario').'" class="log2" tabindex="6" /></p>' . "\n";
+	echo '<p><input type="submit" class="button log2" disabled="disabled" name="submit" value="'._('crear usuario').'" tabindex="6" /></p>' . "\n";
 	echo '<input type="hidden" name="process" value="1"/>' . "\n";
 
-	echo '<div style="margin-top: 20px" style="text-align:center">';
+	echo '<div style="margin-top: 20px; text-align:center">';
 	print_oauth_icons($_REQUEST['return']);
 	echo '</div>'."\n";
 

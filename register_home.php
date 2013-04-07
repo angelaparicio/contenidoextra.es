@@ -42,7 +42,7 @@ function do_register0() {
 	
 	echo "<div id=\"register_home_info\">\n";
 		
-		echo '<legend><span class="sign">' . _("Bienvenido") . '</span></legend>' . "\n";
+		echo '<span class="sign">' . _("Bienvenido") . '</span>' . "\n";
 		
 		echo "<p>Bienvenido a contenidoExtra, un lugar para compartir críticas y noticias sobre cine \n"; 
 		echo "basado en el código de <a href=\"http://www.meneame.net/\">menéame</a></p>\n";
@@ -50,6 +50,8 @@ function do_register0() {
 		echo "<p>Si tienes un sitio con noticias de cine y quieres compartirlas aquí, puedes darte de alta y enviar tus noticias y críticas aquí.</p>\n";
 		
 		echo "<p>Puedes registrarte en el formulario de la derecha. Una vez registrado, podrás comentar y enviar noticias y críticas.</p>\n";
+		
+		echo "<p>Si usas Firefox, puedes instalar el <a href=\"http://contenidoextra.es/contenidoextra.xpi\">complemento para Firefox</a> para enviar enlaces con más comodidad.</p>\n";
 		
 	echo "</div>\n";
 	
@@ -81,10 +83,10 @@ function do_register0() {
 		//do_legal(_('condiciones de uso'), 'target="_blank"', false);
 		//echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
 		
-		echo '<p><input type="submit" class="button" disabled="disabled" name="submit" value="'._('crear usuario').'" class="log2" tabindex="6" /></p>' . "\n";
+		echo '<p><input type="submit" class="button log2" disabled="disabled" name="submit" value="'._('crear usuario').'" tabindex="6" /></p>' . "\n";
 		echo '<input type="hidden" name="process" value="1"/>' . "\n";
 		
-		echo '<div style="margin-top: 20px" style="text-align:center">';
+		echo '<div style="margin-top: 20px; text-align:center">';
 		print_oauth_icons($_REQUEST['return']);
 		echo '</div>'."\n";
 		

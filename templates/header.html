@@ -133,7 +133,7 @@ mobile_client = {{ globals.mobile }};
 </script>
 
 </head>
-<body id="{{id}}" {{globals.body_args}}> <a name="Top"></a>
+<body id="{{id}}" {{globals.body_args}}>
 <div id="headerwrap">
 
 
@@ -184,11 +184,12 @@ mobile_client = {{ globals.mobile }};
 
 <div id="naviwrap">
 	<ul id="navigation">
-	<li><a href="{{globals.base_url}}submit.php">{% trans _('enviar historia') %}</a></li>
-	<li><a href="{{globals.base_url}}shakeit.php">{% trans _('pendientes') %}</a></li>
+	<li><a href="{{globals.base_url}}submit.php">{% trans _('enviar noticia') %}</a></li>
+	<li><a href="{{globals.base_url}}shakeit.php">{% trans _('noticias pendientes') %}</a></li>
 	<!--<li><a href="{{globals.base_url}}sneak.php">{% trans _('fisgona') %}</a></li>-->
-   	<li><a href="javascript:fancybox_gallery('all');">{% trans _('galería') %}</a></li>
+   	<!--<<li><a href="javascript:fancybox_gallery('all');">{% trans _('galería') %}</a></li>-->
 	<li><a href="{{globals.base_url}}notame/">{% trans _('charla') %}</a></li>
+	<li><a href="{{globals.base_url}}contenidoextra.xpi">{% trans _('extensión para Firefox') %}</a></li>
 	</ul>
 
 	<ul class="headtools">

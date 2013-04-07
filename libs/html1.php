@@ -291,7 +291,7 @@ function do_pages($total, $page_size=25, $margin = true) {
 		echo '<span class="nextprev">&#187; '._('siguiente'). '</span>';
 	}
 	
-		echo '<a class="extra_buttons" href="#Top">'._('volver al inicio').'</a>';
+		echo '<a class="extra_buttons" href="#headerwrap">'._('volver al inicio').'</a>';
 		echo '<a class="extra_buttons" href="/shakeit.php">'._('ver más noticias').'</a>';
 				
 	echo '</div>';

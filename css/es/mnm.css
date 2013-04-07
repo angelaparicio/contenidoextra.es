@@ -323,6 +323,7 @@ margin: 5px 0 20px 0;
 #container {
 clear:both;
 width: 1050px;
+padding: 2em 0 0 1em;
 }
 
 #sidebar {
