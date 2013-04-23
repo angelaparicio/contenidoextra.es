@@ -79,9 +79,9 @@ function do_register0() {
 		
 		echo '<input type="password" id="verify" name="password2" size="25" tabindex="4" onkeyup="checkEqualFields(this.form.password2, this.form.password)"/></p>' . "\n";
 		
-		//echo '<p><label><span class="note">'._('has leído y aceptas las ');
-		//do_legal(_('condiciones de uso'), 'target="_blank"', false);
-		//echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
+		echo '<p><label><span class="note">'._('has leído y aceptas las ');
+		do_legal(_('condiciones de uso'), 'target="_blank"', false);
+		echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
 		
 		echo '<p><input type="submit" class="button log2" disabled="disabled" name="submit" value="'._('crear usuario').'" tabindex="6" /></p>' . "\n";
 		echo '<input type="hidden" name="process" value="1"/>' . "\n";

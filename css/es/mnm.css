@@ -185,7 +185,11 @@ font-size: 14px;
 padding: 0 5px;
 }
 
-#logo{
+#header h3 {
+display: none;
+}
+
+#logo h1 {
 background:url('../../img/mnm/logo03.png') no-repeat left top;
 height: 35px;
 width: 280px;
@@ -323,7 +327,7 @@ margin: 5px 0 20px 0;
 #container {
 clear:both;
 width: 1050px;
-padding: 2em 0 0 1em;
+padding: 0;
 }
 
 #sidebar {
@@ -1241,9 +1245,9 @@ border-radius: 2px;
 -webkit-border-radius: 2px;
 }
 
-.news-body h1 {
+.news-body h2 {
 margin: 0;
-padding: 0 5px 0 0;
+padding: 0 0.5em 0.5em 0;
 font-size: 140%;
 font-weight: normal;
 background: none;
@@ -2157,10 +2161,15 @@ float: left;
 margin-left: 3%;
 }
 
-#register_home_info legend {
+#register_home_info span {
 top: -18px;
 width: 5.2em;
 position: relative;
+background: none repeat scroll 0 0 #150873;
+color: #FFFFFF;
+font-weight: bold;
+border-radius: 3px;
+padding: 0 5px;
 }
 
 #register_home_info {
@@ -2180,6 +2189,10 @@ clear: both;
 padding-left: 1em;
 }
 
+#dublin-core {
+display: none;
+}
+
 @media all and (max-width: 800px) {
 	body {
 		font-size: 1em;
@@ -2191,3 +2204,4 @@ padding-left: 1em;
 		width: 600px;
 	}
 }
+

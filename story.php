@@ -48,11 +48,15 @@ if (!isset($_REQUEST['id']) && !empty($_SERVER['ORIG_PATH_INFO'])) {
 		//Nuevo intento, por id numerico.
 		$link = Link::from_db($url_args[0]);
 		if (! $link ) {
-			do_error(_('noticia no encontrada'), 404);
+			//Reenviamos a la portada. ¡Ojo, esto debería ser temporal, hasta que Google actualice!
+			header ('HTTP/1.1 301 Moved Permanently');
+			header ('Location: http://contenidoextra.es/');
+			
+			//do_error(_('noticia no encontrada'), 404);
 		}
 		else {
 			header ('HTTP/1.1 301 Moved Permanently');
-			header('Location: ' . $link->get_permalink() );
+			header ('Location: ' . $link->get_permalink() );
 		}
 	}
 } else {

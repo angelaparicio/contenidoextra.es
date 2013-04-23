@@ -118,27 +118,14 @@ mobile_client = {{ globals.mobile }};
 	{{ globals.extra_head}}
 {% endif %}
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-34355582-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
 </head>
 <body id="{{id}}" {{globals.body_args}}>
 <div id="headerwrap">
 
 
 <div id="header">
-<a href="{{globals.base_url}}" title="{% trans _('inicio') %}" id="logo">{% trans _("contenido Extra") %}</a>
+<a href="{{globals.base_url}}" title="{% trans _('inicio') %}" id="logo"><h1>{% trans _("contenido Extra") %}</h1></a>
+<h3>noticias y críticas de cine</h3>
 {% if globals.ads_branding %}
 {% try_include 'private/ad-sponsored.html' %}
 {% endif %}
